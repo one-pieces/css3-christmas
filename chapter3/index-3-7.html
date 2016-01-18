@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <title>圣诞主题</title>
+        <script type="text/javascript" src="./observer.js"></script>
+    </head>
+    <body>
+        <button>点击触发page任务</button>
+        <button>点击取消page任务</button>
+        <script type="text/javascript">
+            // 观察者
+            var observer = new Observer();
+
+            // page函数
+            // 模拟运行1秒的一个函数
+            function page() {
+                setTimeout(function() {
+                    // 发布一个完成的时间
+                    observer.publish("complete");
+                }, 1000);
+            }
+
+            // 订阅一个完成的时间
+            observer.subscribe("complete", function() {
+                alert("page任务完成");
+            });
+
+            // 触发任务
+            document.querySelectorAll("button")[0].addEventListener("click", function() {
+                page();
+            }, false);
+
+            // 取消任务
+            document.querySelectorAll("button")[1].addEventListener("click", function() {
+                observer.unsubscribe("complete");
+                alert("注销订阅complete事件");
+            }, false);
+        </script>
+    </body>
+</html>

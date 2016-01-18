@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>圣诞主题</title>
+        <style type="text/css">
+            .bird {
+                min-width: 4rem;
+                min-height: 2rem;
+                top: 10%;
+                right: 0;
+                position: absolute;
+                z-index: 10;
+                background: url(http://img.mukewang.com/55ade1700001b38302730071.png);
+                background-size: 300% 100%;
+            }
+            .birdFly {
+                /* 写法1 */
+                -moz-animation: bird-slow 400ms steps(1,start) infinite;
+
+                /* 写法2 */
+                -webkit-animation-name: bird-slow;
+                -webkit-animation-duration: 400ms;
+                -webkit-animation-timing-function: steps(3);
+                -webkit-animation-iteration-count: infinite;
+            }
+
+            /* */
+            @-webkit-keyframes bird-slow {
+                0% {background-position: -0% 0%}
+                100% {background-position: -300% 0%}
+            }
+            @-moz-keyframes bird-slow {
+                0% {background-position: -0% 0%}
+                50% {background-position: -100% 0%}
+                75% {background-position: -200% 0%}
+                100% {background-position: -300% 0%}
+            }
+        </style>
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://img.mukewang.com/down/55ac9ea30001ace700000000.js"></script>
+    </head>
+    <body>
+        <!-- <h1>steps(3)实现帧动画</h1> -->
+        <div class="bird birdFly"></div>
+        <button>点击运动</button>
+    </body>
+    <script type="text/javascript">
+        $("button").on("click", function() {
+            $(".bird").transition({
+                'right': "5rem"
+            }, 1000, 'linear', function() {
+                alert("结束");
+            });
+        });
+        var docEl = document.documentElement,
+        // 当设备的方向变化（设备横向持或纵向持）此事件被触发。
+        // 绑定此事件时，注意现在当浏览器不支持orientationchange事件的时候我们绑定了resize事件。
+        // 总的来说就是监听当前窗口的变化，一旦有变化就需要重新设置根字体的值
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function() {
+            // 设置根字体大小
+            docEl.style.fontSize = 20 * (docEl.clientWidth / 320) + 'px';
+        }
+        // 绑定浏览器缩放与加载时间
+        window.addEventListener(resizeEvt, recalc, false);
+        document.addEventListener('DOMContentLoaded', recalc, false);
+    </script>
+</html>
