@@ -8,6 +8,8 @@ function pageB(element, pageComplete) {
     var $boy = element.find(".christmas-boy");
     //女孩
     var $girl = element.find(".girl");
+    //猫
+    var $cat = element.find(".cat");
 
     var animationEnd = "animationend webkitAnimationEnd";
 
@@ -134,6 +136,7 @@ function pageB(element, pageComplete) {
             return girlAction
 		        .standUp()
 		        .then(function() {
+                    $cat.addClass("cat-book");
 		            //女孩停止走路
 		            return girlAction.stopWalk();
 		        })

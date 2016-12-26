@@ -29,12 +29,12 @@ var Christmas = function() {
     var observer = new Observer();
 
     // A场景页面
-    // new pageA($pageA, function() {
-    //     observer.publish("completeA");
-    // });
-    changePage($pageC, "effect-in", function() {
-                    new pageC();
-                });
+    new pageA($pageA, function() {
+        observer.publish("completeA");
+    });
+    // changePage($pageC, "effect-in", function() {
+    //                 new pageC();
+    //             });
 
     // 进入B场景
     observer.subscribe("pageB", function() {
@@ -63,8 +63,8 @@ var Christmas = function() {
 }
 
 $(function() {
-    $("button").click(function() {
+    // $("button").click(function() {
         // 圣诞主题效果，开始
         Christmas();
-    });
+    // });
 });

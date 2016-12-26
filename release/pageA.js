@@ -71,7 +71,7 @@ pageA.prototype.run = function(callback){
     }.bind(this)
 
     next({
-        "time": 1000,
+        "time": 10000,
         "style": {
             "top": "4rem",
             "right": "16rem",
@@ -89,7 +89,7 @@ pageA.prototype.run = function(callback){
     })    
     .then(function() {
         return next({
-            "time":700,
+            "time":7000,
             "style": {
                 "top": "7.8rem",
                 "right": "1.2rem"
