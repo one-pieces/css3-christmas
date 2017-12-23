@@ -52,6 +52,7 @@ var Christmas = function() {
     new pageA(function() {
         observer.publish("completeA");
     });
+    
     // 进入B场景
     observer.subscribe("pageB", function() {
         new pageB(function() {
